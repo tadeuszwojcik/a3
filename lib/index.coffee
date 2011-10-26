@@ -1,5 +1,8 @@
 #TODO:add some comments
 #TODO: additional callback
+#TODO: code review
+#TODO: tests
+#TODO: docs
 
 fsExtensions = require('./fsExtensions')
 dirTreeChecker = require('./directoryTreeConflictChecker')

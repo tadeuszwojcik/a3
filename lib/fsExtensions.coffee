@@ -1,6 +1,9 @@
 fs = require("fs")
 path = require("path")
 #TODO: should we handle gracefully when provided directoryPath?
+#TODO: code review
+#TODO: tests
+#TODO: docs
 
 #reads specified directory recursively and returns tree structure of nested dirs/files
 exports.readDirAsTree = (dirPath) ->

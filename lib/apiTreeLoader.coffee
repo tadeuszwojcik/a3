@@ -1,5 +1,8 @@
 path = require("path")
 
+#TODO: code review
+#TODO: tests
+#TODO: docs
 
 exports.load = (tree, pathPrefix) ->
     apiTree = {}

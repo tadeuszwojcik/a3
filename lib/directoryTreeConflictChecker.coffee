@@ -1,3 +1,7 @@
+#TODO: code review
+#TODO: tests
+#TODO: docs
+
 exports.check=(directoryTree)->
     for file in directoryTree.files
         for dir in directoryTree.dirs
