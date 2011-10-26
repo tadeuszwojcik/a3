@@ -1,1 +1,15 @@
-{}
+{
+  "name": "a3",
+  "description": "a3 loads any folder of code into an 'API Tree'",
+  "version": "0.0.1",
+  "author": "Tadeusz Wójcik <tadeuszwojcik@gmail.com>",
+  "dependencies": {
+    "coffee-script": "= 1.1.2"
+  },
+  "devDependencies": {
+    "jasmine-node": "= 1.0.11"
+  },
+  "directories":  { "lib": "./lib"},
+  "main":         "./a3.js",
+  "engines":      { "node": ">= 0.4.0" }
+}

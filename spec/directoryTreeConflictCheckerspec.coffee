@@ -4,9 +4,9 @@ describe 'directory tree conflict checker',->
 
     describe 'when checking directory tree containing folder and file with the same name and extension on the same level', ->
         dirStructure =
-           currentDir: 'tst1'
+           dirName: 'tst1'
            files: ['a.txt', 'c.rxr']
-           dirs: [{ currentDir:'tst2', files:['conflicting','not-conflicting'], dirs:[{currentDir:'tst2', dirs:[], files:[]},{currentDir:'conflicting',dirs:[],files:[] }]}]
+           dirs: [{ dirName:'tst2', files:['conflicting','not-conflicting'], dirs:[{dirName:'tst2', dirs:[], files:[]},{dirName:'conflicting',dirs:[],files:[] }]}]
 
         response = checker.check(dirStructure)
 

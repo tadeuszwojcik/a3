@@ -1,8 +1,8 @@
 exports.check=(directoryTree)->
     for file in directoryTree.files
         for dir in directoryTree.dirs
-            if file is dir.currentDir
-                return {result:false,error:dir.currentDir}
+            if file is dir.dirName
+                return {result:false,error:dir.dirName}
 
     for dir in directoryTree.dirs
         res = exports.check(dir)
