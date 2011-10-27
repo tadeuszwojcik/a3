@@ -1,9 +1,11 @@
-a3 loads any folder of code into an 'API Tree'
-#TODO: docs
+# a3 loads any folder of code into an 'API Tree'
+
+## Running tests
+To run tests  jasmine-node --coffee spec
 
 
 
-** LICENSE **
+## **LICENSE**
 Copyright (c) 2011 Tadeusz Wójcik <tadeuszwojcik@gmail.com>
 
 The MIT License
