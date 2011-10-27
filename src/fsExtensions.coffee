@@ -1,15 +1,15 @@
 fs = require("fs")
 path = require("path")
-#TODO: should we handle gracefully when provided directoryPath?
-#TODO: code review
-#TODO: tests
-#TODO: docs
+#### fs extensions
 
-#reads specified directory recursively and returns tree structure of nested dirs/files
+#TODO: should we handle gracefully when provided directoryPath is not a directory?
+
+#reads specified directory (non hidden) recursively and returns tree structure of nested dirs/files
 exports.readDirAsTree = (dirPath) ->
-
+    throw new Error("please provide directory path to be read as tree") unless dirPath
     #Use lstat to resolve symlink if we are passed a symlink
-    stat = fs.lstatSync(dirPath)
+    stat = exports.fs.lstatSync(dirPath)
+    # tree like directory structure
     dirTree =
         dirName: dirPath.split('/').reverse()[0]
         dirs: []
@@ -17,13 +17,13 @@ exports.readDirAsTree = (dirPath) ->
 
     if stat.isDirectory() and not isHidden(dirTree.dirName)
 
-        files = fs.readdirSync(dirPath).sort()
+        files = exports.fs.readdirSync(dirPath).sort()
 
         for file in files when not isHidden(file)
 
             absoluteFilePath = path.join(dirPath, file)
 
-            if fs.lstatSync(absoluteFilePath).isDirectory()
+            if exports.fs.lstatSync(absoluteFilePath).isDirectory()
                 #recurse
                 dirTree.dirs.push exports.readDirAsTree(absoluteFilePath)
             else
@@ -33,6 +33,7 @@ exports.readDirAsTree = (dirPath) ->
 
 isHidden = (path)->
     path.match /(^_|^\.|~$)/
+exports.fs = fs
 
 
 
