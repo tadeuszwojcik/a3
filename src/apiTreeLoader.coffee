@@ -4,14 +4,16 @@ path = require("path")
 #TODO: tests
 #TODO: docs
 
-exports.load = (tree, pathPrefix) ->
+
+exports.load = (tree, pathPrefix, moduleLoadedCallback) ->
+
     apiTree = {}
 
     for file in tree.files
-        apiTree[file.split('.')[0]]= require(path.join(pathPrefix,file))
-
+        moduleToLoad = require(path.join(pathPrefix,file))
+        moduleLoadedCallback(apiTree,file.split('.')[0], moduleToLoad)
     for dir in tree.dirs
-        apiTree[dir.dirName] = exports.apiTree(dir,path.join(startDir,dir.dirName))
+        apiTree[dir.dirName] = exports.load(dir,path.join(pathPrefix,dir.dirName), moduleLoadedCallback)
 
     apiTree
 
