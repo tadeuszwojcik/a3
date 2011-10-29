@@ -19,8 +19,21 @@ First, require `a3`:
 Next :
 
 ```coffee
-
+    apiTree = a3.buildApiTree('./app')
+    
 ```
+
+Options: 
+
+```coffee
+    options:
+        moduleLoadedCallback: customCallback #(default callback loads all export methods of module)
+        allowDirectoryConflicts: true #(default is false, and throws exception when dir tree confilct found)
+    
+    apiTree = a3.buildApiTree('./app', options)
+    
+```
+
 
 ## Running Tests
 
