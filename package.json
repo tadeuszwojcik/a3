@@ -1,7 +1,7 @@
 {
   "name": "a3",
   "description": "a3 loads any folder of code into an 'API Tree'",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Tadeusz Wójcik <tadeuszwojcik@gmail.com>",
   "dependencies": {
     "coffee-script": "= 1.1.2"
@@ -9,6 +9,8 @@
   "devDependencies": {
     "jasmine-node": "= 1.0.11"
   },
+  "keywords": ["module loader", "loader", "api tree"],
   "main":         "./a3.js",
+  "repository": "git@github.com:twojcik/a3.git",
   "engines":      { "node": ">= 0.4.0" }
 }
