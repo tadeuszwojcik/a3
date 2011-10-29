@@ -11,6 +11,11 @@ fs = require("fs")
 
 exports.buildApiTree = (dirPath, options)->
 
+    defaultOptions =
+        moduleLoadedCallback: defaultModuleLoadedCallback
+        allowDirectoryConflicts: false
+
+    merge(defaultOptions, options)
 
     dirPath = path.join(fs.realpathSync(), dirPath)
 
@@ -18,10 +23,10 @@ exports.buildApiTree = (dirPath, options)->
 
     checkResult = dirTreeChecker.check(dirTree)
 
-    if checkResult.success
-        apiTreeLoader.load(dirTree,dirPath, defaultModuleLoadedCallback)
+    if checkResult.success or defaultOptions.allowDirectoryConflicts
+        apiTreeLoader.load(dirTree,dirPath, defaultOptions.moduleLoadedCallback)
     else
-        throw new Error(result.conflictingDir)
+        throw new Error(checkResult.conflictingDir)
 
 
 defaultModuleLoadedCallback = (apiTreeObject, moduleName, loadedModule)->
@@ -29,9 +34,11 @@ defaultModuleLoadedCallback = (apiTreeObject, moduleName, loadedModule)->
 
 
 
-
-
-
+merge = (a, b)->
+  if a && b
+    for key,value of b
+      a[key] = value
+  a
 
 
 
