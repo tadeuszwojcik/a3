@@ -1,13 +1,36 @@
 # a3
 
-##Description
-
 a3 module loads any folder of code into an 'API Tree'.
 
-## Running tests
+## Installation
 
-To run tests  jasmine-node --coffee spec
+    npm install a3
 
+
+    
+## Quick Start
+
+First, require `a3`:
+
+```coffee-script
+  a3 = require('a3')
+```
+
+Next :
+
+```coffee
+
+```
+
+## Running Tests
+
+To run the test suite first invoke the following command within the repo, installing the development dependencies:
+
+    npm install
+then run:
+
+    jasmine-node --coffee spec
+    
 ## **LICENSE**
 
 Copyright (c) 2011 Tadeusz Wójcik <tadeuszwojcik@gmail.com>
