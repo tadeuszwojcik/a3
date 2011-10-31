@@ -34,6 +34,105 @@ Options:
     
 ```
 
+## Simple example:
+
+Assuming we've got following code folders structure:
+
+```coffee-script
+    api\comments.coffee
+    
+    api\posts.coffee
+    
+    api\users.coffee
+    
+    api\admin\users.coffee
+    
+    api\admin\comments.coffee
+```
+With following file contents:
+  
+api\comments.coffee
+
+```coffee
+  exports.list  ->
+    ## some code
+  exports.add(comment)  ->
+    ## some code
+```
+
+api\posts.coffee
+
+```coffee
+  exports.list  ->
+    ## some code
+  exports.add(post)  ->
+    ## some code
+```
+
+api\users.coffee
+
+```coffee
+  exports.list  ->
+    ## some code
+  exports.add(user)  ->
+    ## some code
+```
+
+api\admin\users.coffee
+
+```coffee
+  exports.list  ->
+    ## some code
+  exports.remove(user)  ->
+    ## some code
+```
+api\admin\comments.coffee
+
+```coffee
+  exports.list  ->
+    ## some code
+  exports.remove(comment)  ->
+    ##  some code
+    
+```
+Invoke buildApiTree on api folder :
+
+```coffee
+    api = a3.buildApiTree('./api')
+```
+
+It will return following object with all modules in provided code folder loaded:
+
+```coffee
+
+{ 
+    comments:{ 
+                list: [Function],
+                add: [Function] 
+             },
+      posts: { 
+                list: [Function],
+                add: [Function] 
+             },
+      users: {
+                list: [Function],
+                add: [Function] 
+             },
+      admin: { users:{ 
+                          list: [Function],
+                          remove: [Function] 
+                     },
+               comments:{
+                          list: [Function],
+                          remove: [Function] 
+               
+                     } 
+              }
+}
+
+```
+
+    
 
 ## Running Tests
 
