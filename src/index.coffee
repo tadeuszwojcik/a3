@@ -17,8 +17,6 @@ exports.buildApiTree = (dirPath, options)->
 
     merge(defaultOptions, options)
 
-    dirPath = path.join(fs.realpathSync(), dirPath)
-
     dirTree = fsExtensions.readDirAsTree(dirPath)
 
     checkResult = dirTreeChecker.check(dirTree)
@@ -29,10 +27,14 @@ exports.buildApiTree = (dirPath, options)->
         throw new Error(checkResult.conflictingDir)
 
 
+exports.getBranch = (tree, ary, index = null, i = 0) ->
+  index = (ary.length) unless index?
+  return tree if i == index
+  arguments.callee tree[ary[i]], ary, index, ++i
+
+
 defaultModuleLoadedCallback = (apiTreeObject, moduleName, loadedModule)->
     apiTreeObject[moduleName] = loadedModule
-
-
 
 merge = (a, b)->
   if a && b
