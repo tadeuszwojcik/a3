@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/twojcik/a3.png)](http://travis-ci.org/twojcik/a3)
 # a3
 
 a3 module loads any folder of code into an 'API Tree'.
